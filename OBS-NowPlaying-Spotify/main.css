@@ -1,0 +1,97 @@
+html, body {
+  /* remove default document margin */
+    margin: 0px;
+  /* fill out the entire source */
+    height: 100%;
+  /* make background transparent */
+    background: rgba(255, 255, 255, 0);
+}
+
+#root {
+  /* your desired colours: red, green, blue, alpha (opacity) */
+    background: rgba(255, 105, 180, 0.5);
+    border-color: black;
+    color: white;
+  /* 
+  CSS Box Model (credit: w3schools.com)
+  Padding - Clears an area around the content. The padding is transparent
+  Border - A border that goes around the padding and content
+  Margin - Clears an area outside the border. The margin is transparent
+  Important: When you set the width and height properties of an element with
+  CSS, you just set the width and height of the content area. To calculate the
+  full size of an element, you must also add padding, borders and margins.
+  */
+  /* defining variables (see previous sentence) */
+    --padding: 15px;
+    --border: 0px;
+    --margin: 0px;
+  /* setting box model properties accordingly */
+    padding: var(--padding);
+    border-width: var(--border);
+    margin: var(--margin);
+  /* border style (valid: dotted, dashed, solid, double, none, hidden, ...) */
+  /* caution: if using 'none', --border should be set to 0px */
+     border-style: solid;
+  /* width & height set so they fill out the entire source */
+    width: calc(100% - 2 * (var(--padding) + var(--border) + var(--margin)));
+    height: calc(100% - 2 * (var(--padding) + var(--border) + var(--margin)));
+  /*
+  Text styling:
+  family can be serif, sans-serif, monospace, cursive, fantasy or e.g. "Arial"
+  style can be normal, italic or oblique
+  */
+  font-family: sans-serif;
+  font-style: normal;
+  /*
+  select font size according to height of source:
+  100vh means 100% of the viewport height
+  adjusted for box model properties and average descender height which is ~25%
+  */
+  font-size: calc(
+    0.75 * (100vh - 2 * (
+      var(--padding) + var(--border) + var(--margin)
+    ))
+  );
+  /* center content */
+  display: flex;
+  align-items: center;
+  /* force one-liner */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* progress bar */
+#root:after {
+  content: "";
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5%;
+  width: var(--progress);
+}
+
+#nowplaying {
+  /* animate */
+  position: relative;
+}
+
+/* define variables which holds widths for the animation */
+:root {
+  --textWidth: 0;
+  --rootWidth: 0;
+  --progress: 0;
+}
+
+
+/* animate the text */
+@keyframes floatText{
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(var(--rootWidth) - var(--textWidth));
+  }
+}
+

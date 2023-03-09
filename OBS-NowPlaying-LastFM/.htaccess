@@ -1,0 +1,2 @@
+Header unset Content-Security-Policy
+Header add Content-Security-Policy "default-src 'self' ws.audioscrobbler.com;"
