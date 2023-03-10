@@ -60,14 +60,27 @@ html, body {
   overflow: hidden;
 }
 
+#nowplayingclip {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 110vh);
+  left: 100vh;
+  overflow: hidden;
+}
+
 #nowplaying {
   /* animate */
   position: relative;
+  line-height: 100vh;
 }
 
 #albumart {
-  height: 1em;
+  height: 80vh;
   width: auto;
+  position: absolute;
+  z-index: 1;
+  top: 10vh;
+  left: 10vh;
 }
 
 /* define variables which holds widths for the animation */
@@ -87,3 +100,4 @@ html, body {
     left: calc(var(--rootWidth) - var(--textWidth));
   }
 }
+

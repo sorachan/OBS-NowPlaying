@@ -67,18 +67,31 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
-  height: 5%;
+  height: 5vh;
   width: var(--progress);
+}
+
+#nowplayingclip {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 110vh);
+  left: 100vh;
+  overflow: hidden;
 }
 
 #nowplaying {
   /* animate */
   position: relative;
+  line-height: 100vh;
 }
 
 #albumart {
-  height: 1em;
+  height: 80vh;
   width: auto;
+  position: absolute;
+  z-index: 1;
+  top: 12.5vh;
+  left: 7.5vh;
 }
 
 /* define variables which holds widths for the animation */

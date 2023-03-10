@@ -1,6 +1,5 @@
 var interval = 1; // query interval in seconds
 var bounceInterval = 5; // label bounce interval in seconds
-var albumArt = true; // set to false if you don't want art
 
 /*
   LOGIN: PLEASE READ CAREFULLY!
@@ -109,6 +108,7 @@ if (!refreshToken) {
 
 var root = document.getElementById('root');
 var nowPlaying = document.getElementById('nowplaying');
+var albumArt = document.getElementById('albumart');
 
 var getRecentTracks = function () {
   if (!instance.token) {
@@ -151,16 +151,11 @@ var processRecentTracks = function () {
       artists += data.item.artists[i].name;
     }
   }
+  // load album art
+  albumArt.src = data.item.album.images[0].url;
   // set "now playing" label
   nowPlaying.innerHTML = (
-    (
-      albumArt ? (
-        '<img id="albumart" src="'
-        + data.item.album.images[0].url
-        + '"> '
-      ) : ''
-    )
-    + '<em>'
+    '<em>'
     + data.item.name
     + '</em>&nbsp;by&nbsp;<em>'
     + artists
