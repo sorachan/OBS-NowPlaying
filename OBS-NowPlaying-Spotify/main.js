@@ -1,5 +1,6 @@
 var interval = 1; // query interval in seconds
 var bounceInterval = 5; // label bounce interval in seconds
+var albumArt = true; // set to false if you don't want art
 
 /*
   LOGIN: PLEASE READ CAREFULLY!
@@ -152,7 +153,14 @@ var processRecentTracks = function () {
   }
   // set "now playing" label
   nowPlaying.innerHTML = (
-    '<em>'
+    (
+      albumArt ? (
+        '<img id="albumart" src="'
+        + data.item.album.images[0].url
+        + '"> '
+      ) : ''
+    )
+    + '<em>'
     + data.item.name
     + '</em>&nbsp;by&nbsp;<em>'
     + artists
@@ -187,3 +195,4 @@ setInterval(
   getRecentTracks,
   interval * 1000
 );
+

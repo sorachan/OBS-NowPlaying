@@ -76,6 +76,11 @@ html, body {
   position: relative;
 }
 
+#albumart {
+  height: 1em;
+  width: auto;
+}
+
 /* define variables which holds widths for the animation */
 :root {
   --textWidth: 0;

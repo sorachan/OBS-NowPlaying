@@ -2,6 +2,7 @@ var interval = 1; // query interval in seconds
 var bounceInterval = 15; // label bounce interval in seconds
 var username = 'john.doe'; // your Last.FM username
 var apiKey = "fb5daac5ce459db403f5cd24c9ddc04a";
+var albumArt = true; // set to false if you don't want art
 
 var root = document.getElementById('root');
 var nowPlaying = document.getElementById('nowplaying');
@@ -21,9 +22,17 @@ var getRecentTracks = function () {
 var processRecentTracks = function () {
   // get JSON object from API
   var data = JSON.parse(this.response);
+  console.log(data)
   // set "now playing" label
   nowPlaying.innerHTML = (
-    '<em>'
+    (
+      albumArt ? (
+        '<img id="albumart" src="'
+        + data.recenttracks.track[0].image.slice(-1)[0]['#text']
+        + '"> '
+      ) : ''
+    )
+    + '<em>'
     + data.recenttracks.track[0].name
     + '</em>&nbsp;by&nbsp;<em>'
     + data.recenttracks.track[0].artist['#text']
@@ -50,4 +59,5 @@ setInterval(
   getRecentTracks,
   interval * 1000
 );
+
 
