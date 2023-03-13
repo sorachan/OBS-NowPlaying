@@ -37,7 +37,7 @@ var processRecentTracks = function () {
   // animate if necessary
   var textWidth = nowPlaying.offsetWidth;
   var rootWidth = nowPlayingClip.clientWidth;
-  rootWidth -= 2 * parseFloat(getComputedStyle(root).padding);
+  rootWidth -= 2 * parseFloat(getComputedStyle(nowPlayingClip).padding);
   var documentRoot = document.querySelector(':root');
   documentRoot.style.setProperty('--textWidth', textWidth + 'px');
   documentRoot.style.setProperty('--rootWidth', rootWidth + 'px');
